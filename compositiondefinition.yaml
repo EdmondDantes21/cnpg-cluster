@@ -27,6 +27,6 @@ spec:
       type: boolean
       expression: '${ .api.cluster.items[0].status.conditions | if . == null then null else any(.[]; .type == "Ready" and .status == "True") end }'
     - forPath: health.reason
-      expression: Creating
+      expression: '${ .api.cluster.items[0].status | if . == null or any(.conditions[]?; .type == "Ready" and .status == "True") then null else "Creating" end }'
     - forPath: health.message
       expression: '${ .api.cluster.items[0].status | if . == null or any(.conditions[]?; .type == "Ready" and .status == "True") then null else (.phase // "Waiting for the database") end }'
