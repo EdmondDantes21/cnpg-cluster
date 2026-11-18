@@ -1,0 +1,16 @@
+# Number of PostgreSQL instances (1 primary + N-1 replicas).
+instances: 1
+
+# PostgreSQL image. Empty uses the operator's default image.
+imageName: ""
+
+storage:
+  size: 1Gi
+  # Empty uses the cluster's default StorageClass.
+  storageClass: ""
+
+# Application database created at bootstrap. CNPG stores its credentials
+# in the Secret "<cluster name>-app".
+database:
+  name: app
+  owner: app

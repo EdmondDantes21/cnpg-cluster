@@ -1,0 +1,10 @@
+# Read by the CompositionDefinition's apiRef: the CNPG Cluster created by one composition.
+apiVersion: templates.krateo.io/v1
+kind: RESTAction
+metadata:
+  name: cnpg-cluster-status
+  namespace: krateo-system
+spec:
+  api:
+    - name: cluster
+      path: '${ "/apis/postgresql.cnpg.io/v1/namespaces/\(.compositionNamespace)/clusters?labelSelector=krateo.io/composition-id=\(.compositionId)" }'

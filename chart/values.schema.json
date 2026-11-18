@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "instances": {
+      "type": "integer",
+      "title": "Instances",
+      "description": "Number of PostgreSQL instances",
+      "default": 1,
+      "minimum": 1
+    },
+    "imageName": {
+      "type": "string",
+      "title": "Image",
+      "description": "PostgreSQL image; empty uses the operator default",
+      "default": ""
+    },
+    "storage": {
+      "type": "object",
+      "title": "Storage",
+      "additionalProperties": true,
+      "properties": {
+        "size": {
+          "type": "string",
+          "title": "Size",
+          "description": "Volume size per instance",
+          "default": "1Gi"
+        },
+        "storageClass": {
+          "type": "string",
+          "title": "Storage class",
+          "description": "Empty uses the default StorageClass",
+          "default": ""
+        }
+      }
+    },
+    "database": {
+      "type": "object",
+      "title": "Database",
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "Application database created at bootstrap",
+          "default": "app"
+        },
+        "owner": {
+          "type": "string",
+          "title": "Owner",
+          "description": "Role that owns the application database",
+          "default": "app"
+        }
+      }
+    },
+    "global": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

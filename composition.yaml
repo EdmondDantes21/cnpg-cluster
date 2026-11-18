@@ -1,0 +1,12 @@
+apiVersion: composition.krateo.io/v0-1-0
+kind: CnpgCluster
+metadata:
+  name: pg-test
+  namespace: krateo-system
+spec:
+  instances: 1
+  storage:
+    size: 1Gi
+  database:
+    name: app
+    owner: app
